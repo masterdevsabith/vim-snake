@@ -21,7 +21,14 @@ export default function Home() {
 		const game = new vimSnakeLogic(ctx, gameWidth, gameHeight, scoreTextRef);
 		game.gameStart();
 
-		return;
+		const handleKeyDown = (event: any) => {
+			game.changeDirection(event);
+		};
+		window.addEventListener("keydown", handleKeyDown);
+
+		//reset button code
+
+		return () => window.removeEventListener("keydown", handleKeyDown);
 	}, []);
 
 	return (

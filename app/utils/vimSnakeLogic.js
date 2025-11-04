@@ -37,11 +37,23 @@ export class vimSnakeLogic {
 
 	nextTick() {
 		if (this.running) {
-			this.drawSnake();
+			setTimeout(() => {
+				this.clearBoard();
+				this.drawFood();
+				this.moveSnake();
+				this.drawSnake();
+				this.checkGameOver();
+				this.nextTick();
+			}, 80);
+		} else {
+			this.displayGameOver();
 		}
 	}
 
-	clearBoard() {}
+	clearBoard() {
+		this.ctx.fillStyle = this.boardBackgroundColor;
+		this.ctx.fillRect(0, 0, this.gameWidth, this.gameHeight);
+	}
 
 	createFood() {
 		const randomFood = (min, max) => {
@@ -61,7 +73,20 @@ export class vimSnakeLogic {
 		this.ctx.fillRect(this.foodX, this.foodY, this.unitSize, this.unitSize);
 	}
 
-	moveSnake() {}
+	moveSnake() {
+		const head = {
+			x: this.snake[0].x + this.xVelocity,
+			y: this.snake[0].y + this.yVelocity,
+		};
+		this.snake.unshift(head);
+		if (this.snake[0].x == this.foodX && this.snake[0].y == this.foodY) {
+			this.score += 1;
+			this.scoreText.current.textContent = this.score;
+			this.createFood();
+		} else {
+			this.snake.pop();
+		}
+	}
 
 	drawSnake() {
 		this.ctx.fillStyle = "#00ba05";
@@ -81,7 +106,7 @@ export class vimSnakeLogic {
 		});
 	}
 
-	changeDirection() {}
+	changeDirection(event) {}
 
 	checkGameOver() {}
 
