@@ -11,16 +11,28 @@ export default function Home() {
 		<section id="game_screen" className="w-full h-screen flex items-start">
 			<div className="left relative w-2/3 h-full pl-35 flex items-center gap-30 border-r border-neutral-400 p-5">
 				<div className="sudden_info_container">
-					<div className="flex flex-col items-center gap-2">
+					<div className="score_container mb-8 flex flex-col items-center gap-2">
 						<h1 className="text-6xl">0</h1>
 						<span>score</span>
 					</div>
 
 					<div className="flex items-center gap-6">
-						<div className="flex flex-col items-center gap-2">h</div>
-						<div className="flex flex-col items-center gap-2">j</div>
-						<div className="flex flex-col items-center gap-2">k</div>
-						<div className="flex flex-col items-center gap-2">l</div>
+						<div className="flex flex-col items-center gap-2 text-3xl">
+							<h1>h </h1>
+							<span>0</span>
+						</div>
+						<div className="flex flex-col items-center gap-2 text-3xl">
+							<h1>j </h1>
+							<span>0</span>
+						</div>
+						<div className="flex flex-col items-center gap-2 text-3xl">
+							<h1>k </h1>
+							<span>0</span>
+						</div>
+						<div className="flex flex-col items-center gap-2 text-3xl">
+							<h1>l </h1>
+							<span>0</span>
+						</div>
 					</div>
 				</div>
 				<canvas
