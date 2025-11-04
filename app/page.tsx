@@ -18,7 +18,16 @@ export default function Home() {
 		const gameWidth = canvasRef.current?.width;
 		const gameHeight = canvasRef.current?.height;
 
-		const game = new vimSnakeLogic(ctx, gameWidth, gameHeight, scoreTextRef);
+		const game = new vimSnakeLogic(
+			ctx,
+			gameWidth,
+			gameHeight,
+			scoreTextRef,
+			hkey,
+			jkey,
+			kkey,
+			lkey
+		);
 		game.gameStart();
 
 		const handleKeyDown = (event: any) => {

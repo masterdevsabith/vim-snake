@@ -1,5 +1,5 @@
 export class vimSnakeLogic {
-	constructor(ctx, gameWidth, gameHeight, scoreText) {
+	constructor(ctx, gameWidth, gameHeight, scoreText, h, j, k, l) {
 		this.ctx = ctx;
 		this.gameWidth = gameWidth;
 		this.gameHeight = gameHeight;
@@ -18,6 +18,8 @@ export class vimSnakeLogic {
 		this.foodX;
 		this.foodY;
 		this.score = 0;
+
+		this.failure_message = "Snake Hit The Wall";
 
 		this.snake = [
 			{ x: this.unitSize * 4, y: 0 },
@@ -106,11 +108,87 @@ export class vimSnakeLogic {
 		});
 	}
 
-	changeDirection(event) {}
+	changeDirection(event) {
+		const keypress = event.keyCode;
+		const H = 72;
+		const J = 74;
+		const K = 75;
+		const L = 76;
 
-	checkGameOver() {}
+		const goingLeft = this.xVelocity == -this.unitSize;
+		const goingRight = this.xVelocity == this.unitSize;
 
-	displayGameOver() {}
+		const goingUp = this.yVelocity == -this.unitSize;
+		const goignDown = this.yVelocity == this.unitSize;
+
+		switch (true) {
+			case keypress == H && !goingRight:
+				this.xVelocity = -this.unitSize;
+				this.yVelocity = 0;
+				break;
+
+			case keypress == L && !goingLeft:
+				this.xVelocity = this.unitSize;
+				this.yVelocity = 0;
+				break;
+
+			case keypress == J && !goingUp:
+				this.xVelocity = 0;
+				this.yVelocity = this.unitSize;
+				break;
+
+			case keypress == K && !goignDown:
+				this.xVelocity = 0;
+				this.yVelocity = -this.unitSize;
+				break;
+		}
+	}
+
+	checkGameOver() {
+		switch (true) {
+			case this.snake[0].x < 0:
+				this.running = false;
+				break;
+
+			case this.snake[0].x >= this.gameWidth:
+				this.running = false;
+				break;
+
+			case this.snake[0].y < 0:
+				this.running = false;
+				break;
+
+			case this.snake[0].y >= this.gameHeight:
+				this.running = false;
+				break;
+		}
+
+		for (let i = 1; i < this.snake.length; i += 1) {
+			if (
+				this.snake[i].x == this.snake[0].x &&
+				this.snake[i].y == this.snake[0].y
+			) {
+				this.running = false;
+				this.failure_message = "Snake Suicide";
+				break;
+			}
+		}
+	}
+
+	displayGameOver() {
+		this.ctx.font = "50px MV Boli";
+		this.ctx.fillStyle = "rgba(28, 28, 28,0.5)";
+		this.ctx.fillRect(0, 0, this.gameWidth, this.gameHeight);
+		this.ctx.textAlign = "center";
+		this.ctx.fillStyle = "white";
+		this.ctx.fillText("Game Over", this.gameWidth / 2, this.gameHeight / 2);
+		this.ctx.fillText(
+			`${this.failure_message}`,
+			this.gameWidth / 2,
+			(this.gameHeight / 3) * 2
+		);
+		this.running = false;
+	}
 
 	resetGame() {}
 }
