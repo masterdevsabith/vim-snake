@@ -27,4 +27,26 @@ export class vimSnakeLogic {
 			{ x: 0, y: 0 },
 		];
 	}
+
+	gameStart() {}
+
+	nextTick() {}
+
+	clearBoard() {}
+
+	createFood() {}
+
+	drawFood() {}
+
+	moveSnake() {}
+
+	drawSnake() {}
+
+	changeDirection() {}
+
+	checkGameOver() {}
+
+	displayGameOver() {}
+
+	resetGame() {}
 }
