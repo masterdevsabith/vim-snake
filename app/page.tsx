@@ -5,33 +5,45 @@ import { useEffect, useRef } from "react";
 
 export default function Home() {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
-	const scoreTextRef = useRef<HTMLDivElement>(null);
+	const scoreTextRef = useRef(null);
+	const hkey = useRef(null);
+	const jkey = useRef(null);
+	const kkey = useRef(null);
+	const lkey = useRef(null);
+
+	useEffect(() => {
+		const ctx = canvasRef.current?.getContext("2d");
+		const gameWidth = canvasRef.current?.width;
+		const gameHeight = canvasRef.current?.height;
+	}, []);
 
 	return (
 		<section id="game_screen" className="w-full h-screen flex items-start">
 			<div className="left relative w-2/3 h-full pl-35 flex items-center gap-30 border-r border-neutral-400 p-5">
 				<div className="sudden_info_container">
 					<div className="score_container mb-8 flex flex-col items-center gap-2">
-						<h1 className="text-6xl">0</h1>
+						<h1 className="text-6xl" ref={scoreTextRef}>
+							0
+						</h1>
 						<span>score</span>
 					</div>
 
 					<div className="flex items-center gap-6">
 						<div className="flex flex-col items-center gap-2 text-3xl">
 							<h1>h </h1>
-							<span>0</span>
+							<span ref={hkey}>0</span>
 						</div>
 						<div className="flex flex-col items-center gap-2 text-3xl">
 							<h1>j </h1>
-							<span>0</span>
+							<span ref={jkey}>0</span>
 						</div>
 						<div className="flex flex-col items-center gap-2 text-3xl">
 							<h1>k </h1>
-							<span>0</span>
+							<span ref={kkey}>0</span>
 						</div>
 						<div className="flex flex-col items-center gap-2 text-3xl">
 							<h1>l </h1>
-							<span>0</span>
+							<span ref={lkey}>0</span>
 						</div>
 					</div>
 				</div>
@@ -39,6 +51,7 @@ export default function Home() {
 					width={500}
 					height={500}
 					className="border-4 border-green-600 mb-5"
+					ref={canvasRef}
 				></canvas>
 				<Image
 					src={"/vimsnakelogowobg.png"}
