@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
+import { vimSnakeLogic } from "./utils/vimSnakeLogic.js";
+
 export default function Home() {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const scoreTextRef = useRef(null);
@@ -15,6 +17,11 @@ export default function Home() {
 		const ctx = canvasRef.current?.getContext("2d");
 		const gameWidth = canvasRef.current?.width;
 		const gameHeight = canvasRef.current?.height;
+
+		const game = new vimSnakeLogic(ctx, gameWidth, gameHeight, scoreTextRef);
+		game.gameStart();
+
+		return;
 	}, []);
 
 	return (

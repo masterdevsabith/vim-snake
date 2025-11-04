@@ -28,19 +28,58 @@ export class vimSnakeLogic {
 		];
 	}
 
-	gameStart() {}
+	gameStart() {
+		this.running = true;
+		this.createFood();
+		this.drawFood();
+		this.nextTick();
+	}
 
-	nextTick() {}
+	nextTick() {
+		if (this.running) {
+			this.drawSnake();
+		}
+	}
 
 	clearBoard() {}
 
-	createFood() {}
+	createFood() {
+		const randomFood = (min, max) => {
+			const randNum =
+				Math.round((Math.random() * (max - min) + min) / this.unitSize) *
+				this.unitSize;
 
-	drawFood() {}
+			return randNum;
+		};
+
+		this.foodX = randomFood(0, this.gameWidth - this.unitSize);
+		this.foodY = randomFood(0, this.gameHeight - this.unitSize);
+	}
+
+	drawFood() {
+		this.ctx.fillStyle = this.foodColor;
+		this.ctx.fillRect(this.foodX, this.foodY, this.unitSize, this.unitSize);
+	}
 
 	moveSnake() {}
 
-	drawSnake() {}
+	drawSnake() {
+		this.ctx.fillStyle = "#00ba05";
+		this.ctx.strokeStyle = this.snakeBorderColor;
+		this.snake.forEach((snakePart, index) => {
+			this.ctx.fillRect(snakePart.x, snakePart.y, this.unitSize, this.unitSize);
+			this.ctx.strokeRect(
+				snakePart.x,
+				snakePart.y,
+				this.unitSize,
+				this.unitSize
+			);
+
+			if (index == 0) {
+				this.ctx.fillStyle = this.snakeColor;
+			}
+		});
+	}
 
 	changeDirection() {}
 
