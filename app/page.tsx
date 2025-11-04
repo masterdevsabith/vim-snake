@@ -7,6 +7,7 @@ import { vimSnakeLogic } from "./utils/vimSnakeLogic.js";
 
 export default function Home() {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
+	const resetButtonRef = useRef<HTMLButtonElement>(null);
 	const scoreTextRef = useRef(null);
 	const hkey = useRef(null);
 	const jkey = useRef(null);
@@ -35,7 +36,7 @@ export default function Home() {
 		};
 		window.addEventListener("keydown", handleKeyDown);
 
-		//reset button code
+		rses;
 
 		return () => window.removeEventListener("keydown", handleKeyDown);
 	}, []);

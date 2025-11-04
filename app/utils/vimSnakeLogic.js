@@ -4,6 +4,15 @@ export class vimSnakeLogic {
 		this.gameWidth = gameWidth;
 		this.gameHeight = gameHeight;
 		this.scoreText = scoreText;
+		this.h = h;
+		this.j = j;
+		this.k = k;
+		this.l = l;
+
+		this.hscore = 0;
+		this.jscore = 0;
+		this.kscore = 0;
+		this.lscore = 0;
 
 		this.boardBackgroundColor = "black";
 		this.snakeColor = "green";
@@ -68,6 +77,12 @@ export class vimSnakeLogic {
 
 		this.foodX = randomFood(0, this.gameWidth - this.unitSize);
 		this.foodY = randomFood(0, this.gameHeight - this.unitSize);
+
+		for (let i = 0; i < this.snake.length; i += 1) {
+			if (this.foodX == this.snake[i].x && this.foodY == this.snake[i].y) {
+				this.createFood();
+			}
+		}
 	}
 
 	drawFood() {
@@ -125,21 +140,29 @@ export class vimSnakeLogic {
 			case keypress == H && !goingRight:
 				this.xVelocity = -this.unitSize;
 				this.yVelocity = 0;
+				this.hscore += 1;
+				this.h.current.textContent = this.hscore;
 				break;
 
 			case keypress == L && !goingLeft:
 				this.xVelocity = this.unitSize;
 				this.yVelocity = 0;
+				this.lscore += 1;
+				this.l.current.textContent = this.lscore;
 				break;
 
 			case keypress == J && !goingUp:
 				this.xVelocity = 0;
 				this.yVelocity = this.unitSize;
+				this.jscore += 1;
+				this.j.current.textContent = this.jscore;
 				break;
 
 			case keypress == K && !goignDown:
 				this.xVelocity = 0;
 				this.yVelocity = -this.unitSize;
+				this.kscore += 1;
+				this.k.current.textContent = this.kscore;
 				break;
 		}
 	}
