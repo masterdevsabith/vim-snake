@@ -49,27 +49,27 @@ export default function Home() {
 		<section id="game_screen" className="w-full h-screen flex items-start">
 			<div className="left relative w-2/3 h-full pl-35 flex items-center gap-30 border-r border-neutral-400 p-5">
 				<div className="sudden_info_container">
-					<div className="score_container mb-8 flex flex-col items-center gap-2">
+					<div className="score_container mb-16 flex flex-col items-center gap-2">
 						<h1 className="text-6xl" ref={scoreTextRef}>
 							0
 						</h1>
 						<span>score</span>
 					</div>
 
-					<div className="flex items-center gap-6">
-						<div className="flex flex-col items-center gap-2 text-3xl">
+					<div className="grid grid-cols-2 grid-rows-2 gap-0 auto-rows-auto auto-flow-row gap-4">
+						<div className="flex flex-col items-center gap-2 text-xl">
 							<h1>h </h1>
 							<span ref={hkey}>0</span>
 						</div>
-						<div className="flex flex-col items-center gap-2 text-3xl">
+						<div className="flex flex-col items-center gap-2 text-xl">
 							<h1>j </h1>
 							<span ref={jkey}>0</span>
 						</div>
-						<div className="flex flex-col items-center gap-2 text-3xl">
+						<div className="flex flex-col items-center gap-2 text-xl">
 							<h1>k </h1>
 							<span ref={kkey}>0</span>
 						</div>
-						<div className="flex flex-col items-center gap-2 text-3xl">
+						<div className="flex flex-col items-center gap-2 text-xl">
 							<h1>l </h1>
 							<span ref={lkey}>0</span>
 						</div>
@@ -97,7 +97,7 @@ export default function Home() {
 				<Image
 					src={"/vimsnakelogowobg.png"}
 					alt="vim-snake-logo"
-					width={250}
+					width={200}
 					height={100}
 					className="-rotate-25 absolute -top-10 left-0"
 				/>
