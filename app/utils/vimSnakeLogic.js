@@ -136,6 +136,7 @@ export class vimSnakeLogic {
 		const goingUp = this.yVelocity == -this.unitSize;
 		const goignDown = this.yVelocity == this.unitSize;
 
+		if (!this.running) return;
 		switch (true) {
 			case keypress == H && !goingRight:
 				this.xVelocity = -this.unitSize;
