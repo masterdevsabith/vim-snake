@@ -9,6 +9,7 @@ import { PauseCircle, RotateCwIcon, Settings } from "lucide-react";
 export default function Home() {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const resetButtonRef = useRef<HTMLButtonElement>(null);
+	const pauseButtonRef = useRef<HTMLButtonElement>(null);
 	const scoreTextRef = useRef(null);
 	const hkey = useRef(null);
 	const jkey = useRef(null);
@@ -41,6 +42,11 @@ export default function Home() {
 			game.resetGame();
 		};
 		resetButtonRef.current?.addEventListener("click", resetGame);
+
+		const pauseGame = () => {
+			game.pauseGame();
+		};
+		pauseButtonRef.current?.addEventListener("click", pauseGame);
 
 		return () => window.removeEventListener("keydown", handleKeyDown);
 	}, []);
@@ -81,7 +87,9 @@ export default function Home() {
 							<button ref={resetButtonRef}>
 								<RotateCwIcon className="font-black" />
 							</button>
-							<PauseCircle />
+							<button ref={pauseButtonRef}>
+								<PauseCircle />
+							</button>
 						</div>
 						<div className="right">
 							<Settings />

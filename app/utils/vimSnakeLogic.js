@@ -21,6 +21,8 @@ export class vimSnakeLogic {
 		this.unitSize = 25;
 
 		this.running = false;
+		this.is_paused = false;
+		this.gameover = false;
 		this.xVelocity = this.unitSize;
 		this.yVelocity = 0;
 
@@ -56,6 +58,8 @@ export class vimSnakeLogic {
 				this.checkGameOver();
 				this.nextTick();
 			}, 80);
+		} else if (this.is_paused) {
+			this.displayPauseScreen();
 		} else {
 			this.displayGameOver();
 		}
@@ -172,18 +176,22 @@ export class vimSnakeLogic {
 		switch (true) {
 			case this.snake[0].x < 0:
 				this.running = false;
+				this.gameover = true;
 				break;
 
 			case this.snake[0].x >= this.gameWidth:
 				this.running = false;
+				this.gameover = true;
 				break;
 
 			case this.snake[0].y < 0:
 				this.running = false;
+				this.gameover = true;
 				break;
 
 			case this.snake[0].y >= this.gameHeight:
 				this.running = false;
+				this.gameover = true;
 				break;
 		}
 
@@ -193,6 +201,7 @@ export class vimSnakeLogic {
 				this.snake[i].y == this.snake[0].y
 			) {
 				this.running = false;
+				this.gameover = true;
 				this.failure_message = "Snake Suicide";
 				break;
 			}
@@ -214,7 +223,17 @@ export class vimSnakeLogic {
 		this.running = false;
 	}
 
+	displayPauseScreen() {
+		this.ctx.font = "50px MV Boli";
+		this.ctx.fillStyle = "rgba(28, 28, 28,0.4)";
+		this.ctx.fillRect(0, 0, this.gameWidth, this.gameHeight);
+		this.ctx.textAlign = "center";
+		this.ctx.fillStyle = "white";
+		this.ctx.fillText("PAUSED", this.gameWidth / 2, this.gameHeight / 2);
+	}
+
 	resetGame() {
+		this.gameover = false;
 		this.score = 0;
 		this.xVelocity = this.unitSize;
 		this.yVelocity = 0;
@@ -226,5 +245,17 @@ export class vimSnakeLogic {
 			{ x: 0, y: 0 },
 		];
 		this.gameStart();
+	}
+
+	pauseGame() {
+		if (this.gameover) return;
+		this.running = !this.running;
+		this.is_paused = !this.is_paused;
+
+		if (this.running) {
+			this.nextTick();
+		} else {
+			this.displayPauseScreen();
+		}
 	}
 }
