@@ -4,7 +4,15 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 import { vimSnakeLogic } from "./utils/vimSnakeLogic.js";
-import { PauseCircle, RotateCwIcon, Settings } from "lucide-react";
+import {
+	Github,
+	PauseCircle,
+	RotateCwIcon,
+	Settings,
+	Star,
+	Twitter,
+} from "lucide-react";
+import Link from "next/link.js";
 
 export default function Home() {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -110,8 +118,28 @@ export default function Home() {
 					className="-rotate-25 absolute -top-10 left-0"
 				/>
 			</div>
-			<div className="right w-1/3 h-full p-5">
-				<span>login to see</span>
+			<div className="right flex flex-col items-center justify-center w-1/3 h-full p-5">
+				<span className="text-gray-300 mb-12">leaderboard coming soon...</span>
+
+				<div className="socials flex flex-col items-center gap-2 mb-12">
+					<h4 className="text-3xl font-bold">Follow The Creator:</h4>
+					<div className="socials flex items-center gap-2">
+						<Link href={"https://x.com/masterdevsabith"}>
+							<Twitter />
+						</Link>
+						<Link href={"https://github.com/masterdevsabith"}>
+							<Github />
+						</Link>
+					</div>
+				</div>
+
+				<div className="promotions">
+					<Link href={"https://github.com/masterdevsabith/vim-snake"}>
+						<button className="bg-yellow-400 rounded-md px-2 py-5 flex items-center justify-center text-black font-bold">
+							Give a <Star className="mx-2" /> on Github
+						</button>
+					</Link>
+				</div>
 			</div>
 		</section>
 	);
