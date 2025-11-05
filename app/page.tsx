@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { vimSnakeLogic } from "./utils/vimSnakeLogic.js";
 import {
@@ -70,7 +71,7 @@ export default function Home() {
 						<span>score</span>
 					</div>
 
-					<div className="grid grid-cols-2 grid-rows-2 gap-0 auto-rows-auto auto-flow-row gap-4">
+					<div className="grid grid-cols-2 grid-rows-2 auto-rows-auto auto-flow-row gap-4">
 						<div className="flex flex-col items-center gap-2 text-xl">
 							<h1>h </h1>
 							<span ref={hkey}>0</span>
