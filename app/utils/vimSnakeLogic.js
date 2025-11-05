@@ -213,5 +213,17 @@ export class vimSnakeLogic {
 		this.running = false;
 	}
 
-	resetGame() {}
+	resetGame() {
+		this.score = 0;
+		this.xVelocity = this.unitSize;
+		this.yVelocity = 0;
+		this.snake = [
+			{ x: this.unitSize * 4, y: 0 },
+			{ x: this.unitSize * 3, y: 0 },
+			{ x: this.unitSize * 2, y: 0 },
+			{ x: this.unitSize * 1, y: 0 },
+			{ x: 0, y: 0 },
+		];
+		this.gameStart();
+	}
 }

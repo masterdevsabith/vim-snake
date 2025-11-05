@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 import { vimSnakeLogic } from "./utils/vimSnakeLogic.js";
+import { PauseCircle, RotateCwIcon, Settings } from "lucide-react";
 
 export default function Home() {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -36,7 +37,10 @@ export default function Home() {
 		};
 		window.addEventListener("keydown", handleKeyDown);
 
-		rses;
+		const resetGame = (event: any) => {
+			game.resetGame();
+		};
+		resetButtonRef.current?.addEventListener("click", resetGame);
 
 		return () => window.removeEventListener("keydown", handleKeyDown);
 	}, []);
@@ -71,12 +75,25 @@ export default function Home() {
 						</div>
 					</div>
 				</div>
-				<canvas
-					width={500}
-					height={500}
-					className="border-4 border-green-600 mb-5"
-					ref={canvasRef}
-				></canvas>
+				<div className="canvas_container">
+					<div className="sudden_icons mb-2 flex items-center justify-between">
+						<div className="left flex items-center gap-2">
+							<button ref={resetButtonRef}>
+								<RotateCwIcon className="font-black" />
+							</button>
+							<PauseCircle />
+						</div>
+						<div className="right">
+							<Settings />
+						</div>
+					</div>
+					<canvas
+						width={500}
+						height={500}
+						className="border-4 border-green-600 mb-5"
+						ref={canvasRef}
+					></canvas>
+				</div>
 				<Image
 					src={"/vimsnakelogowobg.png"}
 					alt="vim-snake-logo"
