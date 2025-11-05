@@ -124,17 +124,20 @@ export default function Home() {
 				<div className="socials flex flex-col items-center gap-2 mb-12">
 					<h4 className="text-3xl font-bold">Follow The Creator:</h4>
 					<div className="socials flex items-center gap-2">
-						<Link href={"https://x.com/masterdevsabith"}>
+						<Link href={"https://x.com/masterdevsabith"} target="_blank">
 							<Twitter />
 						</Link>
-						<Link href={"https://github.com/masterdevsabith"}>
+						<Link href={"https://github.com/masterdevsabith"} target="_blank">
 							<Github />
 						</Link>
 					</div>
 				</div>
 
 				<div className="promotions">
-					<Link href={"https://github.com/masterdevsabith/vim-snake"}>
+					<Link
+						href={"https://github.com/masterdevsabith/vim-snake"}
+						target="_blank"
+					>
 						<button className="bg-yellow-400 rounded-md px-2 py-5 flex items-center justify-center text-black font-bold">
 							Give a <Star className="mx-2" /> on Github
 						</button>
