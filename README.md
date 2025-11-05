@@ -3,7 +3,7 @@
 A minimal snake game controlled with Vim-style keys — **h**, **j**, **k**, **l** — built with **Next.js** and **Canvas API**.
 
 
-### OFFICIAL WEBISTE : [vim-snake](https://vim-snake-navy.vercel.app/)
+### live website : [vim-snake](https://vim-snake-navy.vercel.app/)
 ### 🎮 Controls
 
 | Key   | Action         |
