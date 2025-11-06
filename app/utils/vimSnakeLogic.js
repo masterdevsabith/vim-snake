@@ -245,7 +245,19 @@ export class vimSnakeLogic {
 
 	resetGame() {
 		this.gameover = false;
+
 		this.score = 0;
+		this.hscore = 0;
+		this.jscore = 0;
+		this.kscore = 0;
+		this.lscore = 0;
+
+		this.scoreText.current.textContent = this.score;
+		this.h.current.textContent = this.hscore;
+		this.j.current.textContent = this.jscore;
+		this.k.current.textContent = this.kscore;
+		this.l.current.textContent = this.lscore;
+
 		this.xVelocity = this.unitSize;
 		this.yVelocity = 0;
 		this.snake = [
