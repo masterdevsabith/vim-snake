@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vim-snake-navy.vercel.app/sitemap.xml
