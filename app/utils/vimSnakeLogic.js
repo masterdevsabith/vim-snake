@@ -134,12 +134,23 @@ export class vimSnakeLogic {
 		const K = 75;
 		const L = 76;
 
+		const space_bar = 32;
+		const Q = 81;
+
+		// console.log(keypress);
+
 		const goingLeft = this.xVelocity == -this.unitSize;
 		const goingRight = this.xVelocity == this.unitSize;
 
 		const goingUp = this.yVelocity == -this.unitSize;
 		const goignDown = this.yVelocity == this.unitSize;
 
+		if (keypress == space_bar) {
+			this.resetGame();
+		}
+		if (keypress == Q) {
+			this.pauseGame();
+		}
 		if (!this.running) return;
 		switch (true) {
 			case keypress == H && !goingRight:

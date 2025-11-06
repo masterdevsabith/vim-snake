@@ -46,16 +46,6 @@ export default function Home() {
 		};
 		window.addEventListener("keydown", handleKeyDown);
 
-		const resetGame = (event: any) => {
-			game.resetGame();
-		};
-		resetButtonRef.current?.addEventListener("click", resetGame);
-
-		const pauseGame = () => {
-			game.pauseGame();
-		};
-		pauseButtonRef.current?.addEventListener("click", pauseGame);
-
 		return () => window.removeEventListener("keydown", handleKeyDown);
 	}, []);
 
@@ -91,12 +81,16 @@ export default function Home() {
 				</div>
 				<div className="canvas_container">
 					<div className="sudden_icons mb-2 flex items-center justify-between">
-						<div className="left flex items-center gap-2">
-							<button ref={resetButtonRef}>
-								<RotateCwIcon className="font-black" />
+						<div className="left flex flex-col items-start gap-0.4">
+							<button>
+								<span className="text-xs text-neutral-300 italic p-1">
+									<mark>press space to reset game</mark>
+								</span>
 							</button>
-							<button ref={pauseButtonRef}>
-								<PauseCircle />
+							<button>
+								<span className="text-xs text-neutral-300 italic p-1">
+									<mark> press Q to pause game</mark>
+								</span>
 							</button>
 						</div>
 						<div className="right">
